@@ -1,4 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {{ date }}
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="pager">
+                <li class="previous"><a href="{{ path('virtue_date', {day: yesterday|date('Y-m-d') }) }}">← {{ yesterday|date('d-m-Y') }}</a></li>
+                <li class=""><a href="#"><span class="text-success"> {{ virtue.datum|date('d-m-Y') }}</span></a></li>
+                {% if tomorrow is not empty %}
+                    <li class="next"><a href="{{ path('virtue_date', {day: tomorrow|date('Y-m-d') }) }}">{{ tomorrow|date('d-m-y') }} →</a></li>
+                {% else %}
+                    <li class="next disabled"><a href="{{ path('virtue_date', {day: tomorrow|date('Y-m-d') }) }}">patience</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {{ include('virtues/partial/virtue.html.twig',{virtue: virtue.virtue}, with_context = false) }}
 {% endblock %}

@@ -14,23 +14,30 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Class DailyVirtue
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\DailyRepository")
  */
 class DailyVirtue
 {
     /**
+     * @var string
+     *
+     * @ORM\id
+     * @ORM\Column(type="string")
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    protected $id;
+
+    /**
      * @var Virtue
      *
-     * @ORM\OneToOne(targetEntity="Virtue")
+     * @ORM\ManyToOne(targetEntity="Virtue")
      * @ORM\JoinColumn(name="virtue_id", referencedColumnName="id")
      */
     protected $virtue;
 
     /**
      * @var DateTime
-     * @ORM\id
      * @ORM\Column(type="date")
-     * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $datum;
 
@@ -61,8 +68,25 @@ class DailyVirtue
     /**
      * @param DateTime $datum
      */
-    public function setDatum($datum)
+    public function setDatum(\DateTime $datum)
     {
         $this->datum = $datum;
+        $this->setId($datum->format('Y-m-d'));
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }

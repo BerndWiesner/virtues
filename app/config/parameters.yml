@@ -1,12 +1,12 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: 127.0.0.1
-    database_port: null
+    database_host: localhost
+    database_port: 3306
     database_name: virtues
-    database_user: root
-    database_password: null
+    database_user: '%database.user%'
+    database_password: '%database.password%'
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    secret: 3caf0c90957b31419233335a9b28511f8af02bf9
+    secret: '%virtue.secret%'

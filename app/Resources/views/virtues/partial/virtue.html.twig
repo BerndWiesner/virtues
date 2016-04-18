@@ -1,0 +1,11 @@
+<div class="jumbotron">
+    <h2 class="text-success">{{ virtue.title }}</h2>
+    <h3 >{{ virtue.motto }}</h3>
+    <div class="panel panel-success">
+        {% for slogan in virtue.slogans %}
+            <div class="panel-body">
+                <em>{{ slogan.text }}</em>
+            </div>
+        {% endfor %}
+    </div>
+</div>
