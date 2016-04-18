@@ -51,7 +51,7 @@ class Slogan
     /**
      * @param int $id
      */
-    public function setId(int $id)
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -67,7 +67,7 @@ class Slogan
     /**
      * @param string $text
      */
-    public function setText(string $text)
+    public function setText($text)
     {
         $this->text = $text;
     }
