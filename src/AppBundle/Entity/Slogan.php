@@ -19,7 +19,7 @@ class Slogan
     /**
      * @var int
      *
-     * @ORM\id
+     * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */

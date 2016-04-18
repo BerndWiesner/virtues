@@ -21,7 +21,7 @@ class DailyVirtue
     /**
      * @var string
      *
-     * @ORM\id
+     * @ORM\Id
      * @ORM\Column(type="string")
      * @ORM\GeneratedValue(strategy="NONE")
      */
