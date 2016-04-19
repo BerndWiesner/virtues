@@ -69,7 +69,7 @@ class VirtueProvider
         foreach ($result as $item) {
             $exclude[$item->getVirtue()->getId()] = true;
         }
-        $virtue = $this->getRandomVirtue($exclude);
+        $virtue = $this->getRandomVirtue(array_keys($exclude));
 
         $today = new DailyVirtue();
         $today->setDatum($date);
