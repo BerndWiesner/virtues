@@ -73,18 +73,21 @@ class PostSlackCommand extends Command
 
         $payload = new Payload();
         $payload->setMrkdwn(true);
-        $text = '*' . $virtue->getVirtue()->getTitle() .'*\n';
-        $text .= '*' . $virtue->getVirtue()->getMotto() . '*\n';
+        $text = $virtue->getVirtue()->getMotto() .'\n';
         foreach ($virtue->getVirtue()->getSlogans() as $slogan) {
             $text .= ' - ' . $slogan->getText() . '\n';
         }
 
         $attachment = [
-            'text' => $text,
-            'color' => 'good'
+            [
+                'fallback' => $virtue->getVirtue()->getTitle(),
+                'title' => $virtue->getVirtue()->getTitle(),
+                'text' => $text,
+                'color' => 'good'
+            ]
         ];
 
-        $payload->setText('Wert des Tages für den ' . $virtue->getDatum()->format('d.m.Y') );
+        $payload->setText('Wert des Tages für den *' . $virtue->getDatum()->format('d.m.Y') . '*');
         $payload->setAttachments($attachment);
 
 
