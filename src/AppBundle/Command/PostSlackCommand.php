@@ -16,9 +16,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 class PostSlackCommand extends Command
 {
@@ -75,7 +72,7 @@ class PostSlackCommand extends Command
         $payload->setMrkdwn(true);
         $text = $virtue->getVirtue()->getMotto() .'\n';
         foreach ($virtue->getVirtue()->getSlogans() as $slogan) {
-            $text .= ' - ' . $slogan->getText() . '\n';
+            $text .= ' ~ ' . $slogan->getText() . ' ~\n';
         }
 
         $attachment = [
@@ -104,6 +101,5 @@ class PostSlackCommand extends Command
         $result = $client->post($url, [
             'body' => str_replace('\\\\', '\\', json_encode($payload))
         ]);
-        var_dump($result);
     }
 }
