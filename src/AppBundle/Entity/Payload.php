@@ -32,6 +32,16 @@ class Payload
     public $username;
 
     /**
+     * @var string
+     */
+    public $icon_emoji;
+
+    /**
+     * @var array
+     */
+    public $attachments;
+
+    /**
      * @return string
      */
     public function getChannel()
@@ -93,5 +103,37 @@ class Payload
     public function setUsername($username)
     {
         $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIconEmoji()
+    {
+        return $this->icon_emoji;
+    }
+
+    /**
+     * @param string $icon_emoji
+     */
+    public function setIconEmoji($icon_emoji)
+    {
+        $this->icon_emoji = $icon_emoji;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttachments()
+    {
+        return $this->attachments;
+    }
+
+    /**
+     * @param array $attachments
+     */
+    public function setAttachments($attachments)
+    {
+        $this->attachments = $attachments;
     }
 }

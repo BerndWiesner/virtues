@@ -55,6 +55,8 @@ class PostSlackCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $payload = $this->createPayload();
+        $payload->setUsername('WerteBot');
+        $payload->setIconEmoji(':innocent:');
         if ($input->getArgument('channel')) {
             $payload->setChannel($input->getArgument('channel'));
         }
@@ -72,12 +74,18 @@ class PostSlackCommand extends Command
         $payload = new Payload();
         $payload->setMrkdwn(true);
         $text = '*' . $virtue->getVirtue()->getTitle() .'*\n';
-        $text .= '_' . $virtue->getVirtue()->getMotto() . '_\n';
+        $text .= '*' . $virtue->getVirtue()->getMotto() . '*\n';
         foreach ($virtue->getVirtue()->getSlogans() as $slogan) {
-            $text .= ' ' . $slogan->getText() . '\n';
+            $text .= ' - ' . $slogan->getText() . '\n';
         }
 
-        $payload->setText($text);
+        $attachment = [
+            'text' => $text,
+            'color' => 'good'
+        ];
+
+        $payload->setText('Wert des Tages für den ' . $virtue->getDatum()->format('d.m.Y') );
+        $payload->setAttachments($attachment);
 
 
         return $payload;
@@ -91,7 +99,7 @@ class PostSlackCommand extends Command
     {
         $client = new Client();
         $result = $client->post($url, [
-            'body' => json_encode($payload)
+            'body' => str_replace('\\\\', '\\', json_encode($payload))
         ]);
         var_dump($result);
     }
