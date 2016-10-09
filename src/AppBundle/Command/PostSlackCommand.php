@@ -59,7 +59,7 @@ class PostSlackCommand extends Command
             $payload->setChannel($input->getArgument('channel'));
         }
 
-        $this->sendPayload($payload, $this->url);
+        $this->sendPayload($payload, $input->getArgument('url'));
     }
 
     /**
