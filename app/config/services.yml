@@ -10,6 +10,6 @@ services:
 
   post_virtue_command:
     class: AppBundle\Command\PostSlackCommand
-    arguments: [ "@virtue_provider", "@serializer" ]
+    arguments: [ "@virtue_provider" ]
     tags:
         -  { name: console.command }

@@ -26,24 +26,15 @@ class PostSlackCommand extends Command
      * @var VirtueProvider
      */
     protected $virtueProvider;
-
-    protected $serializer;
-
-    /**
-     * @var string
-     */
-    protected $url = 'https://hooks.slack.com/services/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';
-
+    
     /**
      * PostSlackCommand constructor.
      * @param VirtueProvider $virtueProvider
      * @param array $credentials
      */
-    public function __construct(VirtueProvider $virtueProvider, Serializer $serializer)
+    public function __construct(VirtueProvider $virtueProvider)
     {
         $this->virtueProvider = $virtueProvider;
-        $this->serializer = $serializer;
-//        $this->url = $url;
         parent::__construct();
     }
 
