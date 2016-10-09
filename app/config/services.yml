@@ -7,3 +7,9 @@ services:
   virtue_provider:
     class: AppBundle\VirtueProvider
     arguments: ["@doctrine.orm.default_entity_manager"]
+
+  post_virtue_command:
+    class: AppBundle\Command\PostSlackCommand
+    arguments: [ "@virtue_provider", "@serializer" ]
+    tags:
+        -  { name: console.command }
