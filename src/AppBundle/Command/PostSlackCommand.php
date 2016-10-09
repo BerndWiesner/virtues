@@ -71,10 +71,10 @@ class PostSlackCommand extends Command
 
         $payload = new Payload();
         $payload->setMrkdwn(true);
-        $text = '#' . $virtue->getVirtue()->getTitle() .'\n';
-        $text .= '##' . $virtue->getVirtue()->getMotto() . '\n';
+        $text = '*' . $virtue->getVirtue()->getTitle() .'*\n';
+        $text .= '_' . $virtue->getVirtue()->getMotto() . '_\n';
         foreach ($virtue->getVirtue()->getSlogans() as $slogan) {
-            $text .= '* ' . $slogan->getText() . '\n';
+            $text .= ' ' . $slogan->getText() . '\n';
         }
 
         $payload->setText($text);
